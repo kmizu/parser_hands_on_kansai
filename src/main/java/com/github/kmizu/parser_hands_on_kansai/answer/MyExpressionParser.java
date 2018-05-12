@@ -45,12 +45,7 @@ public class MyExpressionParser extends AbstractExpressionParser {
     public ExpressionNode parse(String input) {
         this.input = input;
         this.position = 0;
-        ExpressionNode result = expression();
-        if(this.position != input.length()) {
-            throw new ParseFailure("unconsumed input remains: " + input.substring(position));
-        } else {
-            return result;
-        }
+        return expression();
     }
 
     // expression = additive;

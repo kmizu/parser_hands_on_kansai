@@ -45,7 +45,7 @@ public class MyJSONParser extends AbstractJSONParser {
             position++;
             return ch;
         }
-        throw new ParseFailure("unespected EOF");
+        throw new ParseFailure("unexpected EOF");
     }
 
     public char acceptRange(char from, char to) {
@@ -66,12 +66,7 @@ public class MyJSONParser extends AbstractJSONParser {
     public JSONNode parse(String input) {
         this.input = input;
         this.position = 0;
-        JSONNode result = jvalue();
-        if(this.position != input.length()) {
-            throw new ParseFailure("unconsumed input remains: " + input.substring(position));
-        } else {
-            return result;
-        }
+        return jvalue();
     }
 
     // jvalue = jobject

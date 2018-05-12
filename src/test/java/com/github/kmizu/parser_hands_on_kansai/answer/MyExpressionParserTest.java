@@ -17,11 +17,6 @@ public class MyExpressionParserTest {
     }
 
     @Test(expected = ParseFailure.class)
-    public void confirmTestFailure2() {
-        parser.parse("1a");
-    }
-
-    @Test(expected = ParseFailure.class)
     public void confirmTestFailure3() {
         parser.parse("a1");
     }
@@ -31,15 +26,6 @@ public class MyExpressionParserTest {
         parser.parse("01");
     }
 
-    @Test(expected = ParseFailure.class)
-    public void confirmTestFailure5() {
-        parser.parse("123a456");
-    }
-
-    @Test(expected = ParseFailure.class)
-    public void confirmTestFailure6() {
-        parser.parse("123456a");
-    }
 
     @Test(expected = ParseFailure.class)
     public void confirmTestFailure7() {

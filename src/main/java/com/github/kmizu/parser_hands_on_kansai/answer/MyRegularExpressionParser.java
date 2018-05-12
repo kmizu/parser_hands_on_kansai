@@ -42,12 +42,7 @@ public class MyRegularExpressionParser extends AbstractRegularExpressionParser {
     public RegularExpressionNode parse(String input) {
         this.input = input;
         this.position = 0;
-        RegularExpressionNode result = regularExpression();
-        if(this.position != input.length()) {
-            throw new ParseFailure("unconsumed input remains: " + input.substring(position));
-        } else {
-            return result;
-        }
+        return regularExpression();
     }
 
     public RegularExpressionNode regularExpression() {
