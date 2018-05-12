@@ -36,12 +36,7 @@ public class MyLimitedExpressionParser extends AbstractLimitedExpressionParser {
     public LimitedExpressionNode parse(String input) {
         this.input = input;
         this.position = 0;
-        LimitedExpressionNode result = expression();
-        if(this.position != input.length()) {
-            throw new ParseFailure("unconsumed input remains: " + input.substring(position));
-        } else {
-            return result;
-        }
+        return expression();
     }
 
     public LimitedExpressionNode expression() {
