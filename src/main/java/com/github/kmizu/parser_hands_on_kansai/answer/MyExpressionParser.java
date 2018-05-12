@@ -58,13 +58,13 @@ public class MyExpressionParser extends AbstractExpressionParser {
         // multitive
         ExpressionNode result = multitive();
         while(true) {
-            int current = position;
+            save();
             try {
                 // '+' multitive
                 accept('+');
                 result = new ExpressionNode.Addition(result, multitive());
             } catch (ParseFailure e1) {
-                position = current;
+                restore();
                 try {
                     // '-' multitive
                     accept('-');
@@ -81,13 +81,13 @@ public class MyExpressionParser extends AbstractExpressionParser {
         // primary
         ExpressionNode result = primary();
         while(true) {
-            int current = position;
+            save();;
             try {
                 // '*' primary
                 accept('*');
                 result = new ExpressionNode.Multiplication(result, primary());
             } catch (ParseFailure e1) {
-                position = current;
+                restore();
                 try {
                     // '/' primary
                     accept('/');
@@ -101,15 +101,15 @@ public class MyExpressionParser extends AbstractExpressionParser {
 
     // primary = '(' expression ')' | integer
     public ExpressionNode primary() {
-        int current = position;
         try {
+            save();
             // '(' expression ')'
             accept('(');
             ExpressionNode result = expression();
             accept(')');
             return result;
         } catch (ParseFailure e) {
-            position = current;
+            restore();
             // integer
             return integer();
         }

@@ -76,35 +76,39 @@ public class MyJSONParser extends AbstractJSONParser {
     //        | jnumber
     //        | jstring
     public JSONNode jvalue() {
-        int current = position;
         try {
+            save();
             return jobject();
         } catch (ParseFailure e1) {
-            position = current;
+            restore();;
         }
 
         try {
+            save();
             return jarray();
         } catch (ParseFailure e2) {
-            position = current;
+            restore();
         }
 
         try {
+            save();
             return jnull();
         } catch (ParseFailure e3) {
-            position = current;
+            restore();
         }
 
         try {
+            save();
             return jboolean();
         } catch (ParseFailure e4) {
-            position = current;
+            restore();
         }
 
         try {
+            save();
             return jnumber();
         } catch (ParseFailure e5) {
-            position = current;
+            restore();
             return jstring();
         }
     }

@@ -52,7 +52,6 @@ public class MyRegularExpressionParser extends AbstractRegularExpressionParser {
     public RegularExpressionNode alternative() {
         RegularExpressionNode result = sequencable();
         while(true) {
-            int current = position;
             try {
                 accept('|');
                 result = new RegularExpressionNode.ChoiceNode(result, sequencable());
@@ -65,7 +64,6 @@ public class MyRegularExpressionParser extends AbstractRegularExpressionParser {
     public RegularExpressionNode sequencable() {
         RegularExpressionNode result = repeatable();
         while(true) {
-            int current = position;
             try {
                 result = new RegularExpressionNode.SequenceNode(result, repeatable());
             } catch (ParseFailure e1) {
@@ -76,7 +74,6 @@ public class MyRegularExpressionParser extends AbstractRegularExpressionParser {
 
     public RegularExpressionNode repeatable() {
         RegularExpressionNode result = primary();
-        int current = position;
         try {
             accept('*');
             return new RegularExpressionNode.RepetitionNode(result);
@@ -86,14 +83,14 @@ public class MyRegularExpressionParser extends AbstractRegularExpressionParser {
     }
 
     public RegularExpressionNode primary() {
-        int current = position;
         try {
+            save();
             accept('(');
             RegularExpressionNode result = regularExpression();
             accept(')');
             return result;
         } catch (ParseFailure e) {
-            position = current;
+            restore();
             return character();
         }
     }
