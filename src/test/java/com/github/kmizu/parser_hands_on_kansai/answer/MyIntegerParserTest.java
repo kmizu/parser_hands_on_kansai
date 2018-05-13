@@ -4,10 +4,9 @@ import com.github.kmizu.parser_hands_on_kansai.ParseFailure;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 
 public class MyIntegerParserTest {
-    MyIntegerParserRevised parser = new MyIntegerParserRevised();
+    MyIntegerParser parser = new MyIntegerParser();
     @Test(expected = ParseFailure.class)
     public void confirmTestFailure1() {
         parser.parse("ab");
