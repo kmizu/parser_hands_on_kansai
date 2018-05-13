@@ -126,7 +126,7 @@ public class MyJSONParser extends AbstractJSONParser {
             return new JSONNode.JSONObject(properties);
         }
         while(true) {
-            int current = position;
+            save();
             try {
                 accept(',');
                 String key = jstring().value;
@@ -134,7 +134,7 @@ public class MyJSONParser extends AbstractJSONParser {
                 JSONNode value = jvalue();
                 properties.put(key, value);
             } catch (ParseFailure e) {
-                position = current;
+                restore();
                 break;
             }
         }
@@ -146,14 +146,14 @@ public class MyJSONParser extends AbstractJSONParser {
         StringBuilder content = new StringBuilder();
         accept('"');
         while(true) {
-            int current = position;
+            save();
             try {
                 accept('\\');
                 char code = accept();
                 code = escapeSequence(code);
                 content.append(code);
             } catch (ParseFailure e1) {
-                position = current;
+                restore();
                 try {
                     char code = acceptExcept('"');
                     content.append(code);
@@ -195,12 +195,12 @@ public class MyJSONParser extends AbstractJSONParser {
             return new JSONNode.JSONArray(elements);
         }
         while(true) {
-            int current = position;
+            save();
             try {
                 accept(',');
                 elements.add(jvalue());
             } catch (ParseFailure e) {
-                position = current;
+                restore();
                 break;
             }
         }
@@ -217,7 +217,7 @@ public class MyJSONParser extends AbstractJSONParser {
     }
 
     public JSONNode.JSONBoolean jboolean() {
-        int current = position;
+        save();
         try {
             accept('t');
             accept('r');
