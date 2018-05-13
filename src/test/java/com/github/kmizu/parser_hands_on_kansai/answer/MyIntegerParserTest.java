@@ -55,66 +55,66 @@ public class MyIntegerParserTest {
 
     @Test
     public void confirm9IsParsed() {
-        assertSame((Integer)9, parser.parse("9"));
+        assertEquals((Integer)9, parser.parse("9"));
     }
 
     @Test
     public void confirm10IsParsed() {
-        assertSame((Integer)10, parser.parse("10"));
+        assertEquals((Integer)10, parser.parse("10"));
     }
 
     @Test
     public void confirm11IsParsed() {
-        assertSame((Integer)11, parser.parse("11"));
+        assertEquals((Integer)11, parser.parse("11"));
     }
 
     @Test
     public void confirm19IsParsed() {
-        assertSame((Integer)19, parser.parse("19"));
+        assertEquals((Integer)19, parser.parse("19"));
     }
 
     @Test
     public void confirm20IsParsed() {
-        assertSame((Integer)20, parser.parse("20"));
+        assertEquals((Integer)20, parser.parse("20"));
     }
 
     @Test
     public void confirm90IsParsed() {
-        assertSame((Integer)90, parser.parse("90"));
+        assertEquals((Integer)90, parser.parse("90"));
     }
 
     @Test
     public void confirm91IsParsed() {
-        assertSame((Integer)91, parser.parse("91"));
+        assertEquals((Integer)91, parser.parse("91"));
     }
 
     @Test
     public void confirm99IsParsed() {
-        assertSame((Integer)99, parser.parse("99"));
+        assertEquals((Integer)99, parser.parse("99"));
     }
 
     @Test
     public void confirm100IsParsed() {
-        assertSame((Integer)100, parser.parse("100"));
+        assertEquals((Integer)100, parser.parse("100"));
     }
 
     @Test
     public void confirm101IsParsed() {
-        assertSame((Integer)101, parser.parse("101"));
+        assertEquals((Integer)101, parser.parse("101"));
     }
 
     @Test
     public void confirm109IsParsed() {
-        assertSame((Integer)109, parser.parse("109"));
+        assertEquals((Integer)109, parser.parse("109"));
     }
 
     @Test
     public void confirm110IsParsed() {
-        assertSame((Integer)110, parser.parse("110"));
+        assertEquals((Integer)110, parser.parse("110"));
     }
 
     @Test
     public void confirm111IsParsed() {
-        assertSame((Integer)111, parser.parse("111"));
+        assertEquals((Integer)111, parser.parse("111"));
     }
 }
